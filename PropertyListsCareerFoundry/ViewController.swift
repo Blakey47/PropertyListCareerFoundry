@@ -37,9 +37,6 @@ class ViewController: UIViewController {
             people = try PropertyListSerialization.propertyList(from: plistData, options: [], format: &plistFormat) as? [Dictionary<String, Any>]
             
             if var people = people {
-                for person in people {
-                    print("First Name: \(String(describing: person["First Name"])), Last Name: \(String(describing: person["Last Name"])), Age: \(String(describing: person["Age"]))")
-                }
                 
                 let anotherPerson = ["First Name" : firstNameTextField.text!, "Last Name" : lastNameTextField.text!, "Age" : ageTextField.text!] as [String : Any]
                 people.append(anotherPerson)
@@ -54,11 +51,10 @@ class ViewController: UIViewController {
         } catch {
             print("Error")
         }
-        performSegue(withIdentifier: "showInfo", sender: self)
     }
     
     @IBAction func showButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "showInfo", sender: self)
+        performSegue(withIdentifier: "showInfo", sender: self)        
     }
     
     

@@ -10,10 +10,10 @@ import UIKit
 
 class ShowInfoViewController: UIViewController {
     
-    @IBOutlet weak var ageLabel: UILabel!
-    @IBOutlet weak var lastNameLabel: UILabel!
-    @IBOutlet weak var firstNameLabel: UILabel!
+    @IBOutlet weak var textView: UITextView!
+    
     var personInfo: [Dictionary<String, Any>]?
+    var infoForTextView = ""
     
     
     override func viewDidLoad() {
@@ -24,9 +24,10 @@ class ShowInfoViewController: UIViewController {
     
     func showInfo() {
         if let personInfo = personInfo {
-            for person in personInfo {
-                print("First Name: \(String(describing: person["First Name"])), Last Name: \(String(describing: person["Last Name"])), Age: \(String(describing: person["Age"]))")
+            for i in 0...personInfo.count - 1 {
+                infoForTextView += "\(personInfo[i]["First Name"]!) \(personInfo[i]["Last Name"]!), Age: \(personInfo[i]["Age"]!)\n"
             }
+            textView.text = infoForTextView
         }
     }
     
